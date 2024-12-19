@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.android.doctorapp.ui.profile.ProfileViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true">
+
+        <include
+            android:id="@+id/toolbarContainer"
+            layout="@layout/custom_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/topBackgroundView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_150"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbarContainer" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_24"
+            android:layout_marginTop="@dimen/dp_24"
+            android:elevation="@dimen/margin_5"
+            android:paddingHorizontal="@dimen/margin_10"
+            app:cardCornerRadius="@dimen/margin_20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/topBackgroundView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/margin_20"
+                android:paddingVertical="@dimen/margin_10">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/profileImage"
+                    android:layout_width="@dimen/dp_100"
+                    android:layout_height="@dimen/dp_100"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:elevation="@dimen/margin_5"
+                    app:cardCornerRadius="@dimen/dp_32"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivUser"
+                        android:layout_width="@dimen/dp_100"
+                        android:layout_height="@dimen/dp_100"
+                        android:background="@drawable/ic_person_white"
+                        android:scaleType="center"
+                        app:imageUri="@{viewModel.imageUri}" />
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvName"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:text="@{viewModel.userProfileDataResponse.name}"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profileImage" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ic_email_blue"
+                    android:drawablePadding="@dimen/margin_10"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:onClick="@{()->viewModel.onClickEmailIcon(viewModel.userProfileDataResponse.email)}"
+                    android:text="@{viewModel.userProfileDataResponse.email}"
+                    android:textColor="@color/grey"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivEditProfile"
+                    android:layout_width="@dimen/margin_20"
+                    android:layout_height="@dimen/margin_20"
+                    android:layout_marginHorizontal="@dimen/margin_10"
+                    android:onClick="@{view -> viewModel.editClick(viewModel.userProfileDataResponse.doctor)}"
+                    android:src="@drawable/ic_blue_edit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/margin_16"
+            android:layout_marginVertical="@dimen/margin_24"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvMyDoctors"
+                    style="@style/label_text"
+                    android:layout_height="@dimen/dp_48"
+                    android:layout_marginHorizontal="@dimen/margin_5"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:background="@{viewModel.isDarkThemeClicked ? @drawable/rounded_view_dark_bg : @drawable/rounded_view_bg}"
+                    android:drawableEnd="@drawable/baseline_arrow_forward_ios_24"
+                    android:elevation="@dimen/margin_5"
+                    android:gravity="center_vertical"
+                    android:onClick="@{view -> viewModel.clickOnMyDoctors()}"
+                    android:paddingHorizontal="@dimen/margin_10"
+                    android:text="@string/my_doctors"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSymptomHistory"
+                    style="@style/label_text"
+                    android:layout_height="@dimen/dp_48"
+                    android:layout_marginHorizontal="@dimen/margin_5"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:background="@{viewModel.isDarkThemeClicked ? @drawable/rounded_view_dark_bg : @drawable/rounded_view_bg}"
+                    android:drawableEnd="@drawable/baseline_arrow_forward_ios_24"
+                    android:elevation="@dimen/margin_5"
+                    android:gravity="center_vertical"
+                    android:onClick="@{view -> viewModel.clickOnHistory()}"
+                    android:paddingHorizontal="@dimen/margin_10"
+                    android:text="@string/history"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvMyDoctors" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvFeedbackView"
+                    style="@style/label_text"
+                    android:layout_height="@dimen/dp_48"
+                    android:layout_marginHorizontal="@dimen/margin_5"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:background="@{viewModel.isDarkThemeClicked ? @drawable/rounded_view_dark_bg : @drawable/rounded_view_bg}"
+                    android:drawableEnd="@drawable/baseline_arrow_forward_ios_24"
+                    android:elevation="@dimen/margin_5"
+                    android:gravity="center_vertical"
+                    android:onClick="@{view -> viewModel.clickOnFeedback()}"
+                    android:paddingHorizontal="@dimen/margin_10"
+                    android:text="@string/feedback"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvSymptomHistory" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/notificationView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_48"
+                    android:layout_marginHorizontal="@dimen/margin_5"
+                    android:layout_marginVertical="@dimen/margin_20"
+                    android:background="@{viewModel.isDarkThemeClicked ? @drawable/rounded_view_dark_bg : @drawable/rounded_view_bg}"
+                    android:elevation="@dimen/margin_5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvFeedbackView">
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvNotificationEnable"
+                        style="@style/label_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="@dimen/margin_10"
+                        android:text="@string/appointment_notification"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_doctor_notification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin_10"
+                        android:checked="@={viewModel.notificationToggleData}"
+                        android:onClick="@{view -> viewModel.clickOnNotification()}"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvNotificationEnable"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvNotificationEnable" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/themeView"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="20dp"
+                    android:background="@{viewModel.isDarkThemeClicked ? @drawable/rounded_view_dark_bg : @drawable/rounded_view_bg}"
+                    android:elevation="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/notificationView">
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvThemeEnable"
+                        style="@style/label_text"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="@dimen/margin_10"
+                        android:text="@string/enable_dark_theme"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/changeTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:checked="@={viewModel.isDarkThemeClicked}"
+                        android:onClick="@{view -> viewModel.clickedOnDarkTheme()}"
+                        app:layout_constraintBottom_toBottomOf="@+id/themeView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/themeView" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvLogoutView"
+                    style="@style/label_text"
+                    android:layout_height="@dimen/dp_48"
+                    android:layout_marginHorizontal="@dimen/margin_5"
+                    android:layout_marginVertical="@dimen/margin_20"
+                    android:background="@{viewModel.isDarkThemeClicked ? @drawable/rounded_view_dark_bg : @drawable/rounded_view_bg}"
+                    android:elevation="@dimen/margin_5"
+                    android:gravity="center_vertical"
+                    android:onClick="@{view -> viewModel.signOut()}"
+                    android:paddingHorizontal="@dimen/margin_10"
+                    android:text="@string/sign_out"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/themeView" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

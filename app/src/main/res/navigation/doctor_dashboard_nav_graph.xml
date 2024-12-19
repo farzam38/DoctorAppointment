@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav_view"
+    app:startDestination="@id/navigation_appointment">
+
+    <fragment
+        android:id="@+id/navigation_request"
+        android:name="com.android.doctorapp.ui.doctordashboard.doctorfragment.RequestDoctorFragment"
+        tools:layout="@layout/fragment_request_doctor">
+
+        <action
+            android:id="@+id/request_to_appointment_details"
+            app:destination="@+id/AppointmentDetails" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_appointment"
+        android:name="com.android.doctorapp.ui.doctordashboard.doctorfragment.AppointmentDoctorFragment"
+        tools:layout="@layout/fragment_appointment_doctor">
+
+        <action
+            android:id="@+id/action_doctor_appointment_to_selected_date"
+            app:destination="@+id/navigation_selected_date_appointments" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.android.doctorapp.ui.doctordashboard.doctorfragment.DoctorProfileFragment"
+        tools:layout="@layout/fragment_doctor_profile">
+
+        <action
+            android:id="@+id/action_doctor_profile_to_updateDoctorProfile"
+            app:destination="@+id/UpdateDoctorProfileFragment" />
+
+        <action
+            android:id="@+id/action_doctor_profile_to_viewClinic"
+            app:destination="@+id/navigation_view_clinic" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/AppointmentDetails"
+        android:name="com.android.doctorapp.ui.appointment.AppointmentDetailFragment"
+        tools:layout="@layout/fragment_appointment_detail">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_selected_date_appointments"
+        android:name="com.android.doctorapp.ui.doctordashboard.doctorfragment.SelectedDateAppointmentsFragment"
+        tools:layout="@layout/fragment_selected_date_appointments">
+
+        <action
+            android:id="@+id/action_selected_date_to_appointment_details"
+            app:destination="@+id/AppointmentDetails" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/UpdateDoctorProfileFragment"
+        android:name="com.android.doctorapp.ui.doctor.UpdateDoctorProfileFragment"
+        tools:layout="@layout/fragment_update_doctor_profile">
+
+        <action
+            android:id="@+id/action_updateDoctorFragment_to_doctor_address_fragment"
+            app:destination="@+id/navigation_doctor_address" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_doctor_address"
+        android:name="com.android.doctorapp.ui.doctordashboard.doctorfragment.DoctorAddressFragment"
+        tools:layout="@layout/fragment_doctor_address">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_view_clinic"
+        android:name="com.android.doctorapp.ui.doctordashboard.doctorfragment.ViewClinicFragment"
+        tools:layout="@layout/fragment_view_clinic">
+
+        <action
+            android:id="@+id/action_viewClinic_to_previewClinic"
+            app:destination="@+id/navigation_preview_clinic" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_preview_clinic"
+        android:name="com.android.doctorapp.ui.doctordashboard.doctorfragment.PreviewClinicImgFragment"
+        tools:layout="@layout/fragment_preview_clinic_img">
+
+    </fragment>
+
+</navigation>

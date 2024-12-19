@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent_black">#30000000</color>
+    <color name="top_bar_bg_color">#1b5094</color>
+    <color name="yellow">#FFBF00</color>
+    <color name="grey">#7b7b7b</color>
+    <color name="btn_grey">#e5e5e5</color>
+    <color name="blue">#1a4d91</color>
+    <color name="color_background_box">#F5F5F5</color>
+    <color name="color_background_box_stroke">#DEDEDE</color>
+    <color name="color_background_box_stroke_active">#A5A5A5</color>
+    <color name="edittext_bg_grey">#afadae</color>
+    <color name="green">#247A28</color>
+    <color name="app_bg">#f5f5f5</color>
+    <color name="edit_bg">#bebebe</color>
+    <color name="light_green">#33cc33</color>
+    <color name="red">#e60000</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="doctor_bg">#f2f2f8</color>
+    <color name="pending">#f1c232</color>
+    <color name="divider">#f1f1f1</color>
+    <color name="appointments_bg">#f3f6ff</color>
+    <color name="gray_border">#D3D3D3</color>
+    <color name="dark_grey">#58657e</color>
+    <color name="light_grey">#858383</color>
+    <color name="cyan">#8fd7da</color>
+    <color name="btn_green_bg">#164E18</color>
+    <color name="btn_red_bg">#A10303</color>
+    <color name="light_blue_bg">#4cbbd9</color>
+    <color name="orange">#D66B45</color>
+    <color name="light_orange">#e4c0b3</color>
+    <color name="rating_bg">#f5bc6a</color>
+    <color name="all_feedback_bg">#fffeff</color>
+    <color name="bg_light_grey">#f9f9f9</color>
+
+
+    <color name="aap_bg_dark_grey">#303030</color>
+    <color name="background">#FAFAFA</color>
+    <color name="rounded_view_bg_color">#212231</color>
+
+
+</resources>

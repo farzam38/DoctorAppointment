@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="header1"
+            type="com.android.doctorapp.repository.models.Header" />
+
+        <variable
+            name="onItemClickListener"
+            type="com.android.doctorapp.ui.doctordashboard.adapter.PatientListAdapter.OnItemClickListener" />
+
+        <variable
+            name="index"
+            type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/margin_20"
+        android:paddingVertical="@dimen/margin_10">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appointmentsDate"
+            style="@style/doctor_text_view"
+            android:layout_marginTop="@dimen/margin_10"
+            android:textStyle="bold"
+            app:headerDate="@{header1.date}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnViewAll"
+            style="@style/doctor_text_view"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10"
+            android:onClick="@{()->onItemClickListener.onItemClick(header1,index)}"
+            android:text="@string/viewAll"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

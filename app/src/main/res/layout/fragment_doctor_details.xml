@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.android.doctorapp.ui.admin.AdminDashboardViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true">
+
+        <include
+            android:id="@+id/toolbarContainer"
+            layout="@layout/custom_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarContainer">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/doctorView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/margin_50"
+                android:layout_marginHorizontal="@dimen/margin_20"
+                android:background="@color/doctor_bg"
+                android:elevation="@dimen/margin_5"
+                app:cardCornerRadius="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/doctor_bg"
+                    android:padding="@dimen/margin_10">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/ivDoctorImageView"
+                        android:layout_width="@dimen/dp_100"
+                        android:layout_height="@dimen/dp_100"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/margin_10"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:elevation="@dimen/margin_5"
+                        app:cardCornerRadius="250dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivDoctorImage"
+                            android:layout_width="@dimen/dp_100"
+                            android:layout_height="@dimen/dp_100"
+                            android:background="@drawable/ic_person_white"
+                            android:scaleType="centerCrop"
+                            app:imageUriAndGender="@{viewModel.imageOrGenderObj}" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDoctorNameLabel"
+                        style="@style/label_text2"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:text="@string/name"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ivDoctorImageView"
+                        app:layout_constraintWidth_percent="0.4" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDoctorName"
+                        style="@style/label_text2"
+                        android:layout_marginEnd="@dimen/margin_15"
+                        android:text="@{viewModel.doctorDetails!=null ? viewModel.doctorDetails.name:``}"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/grey"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tvDoctorNameLabel"
+                        app:layout_constraintTop_toTopOf="@id/tvDoctorNameLabel"
+                        app:layout_constraintWidth_percent="0.5" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDoctorAgeLabel"
+                        style="@style/label_text2"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:text="@string/age"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvDoctorName"
+                        app:layout_constraintWidth_percent="0.4" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDoctorAge"
+                        style="@style/label_text2"
+                        android:layout_marginEnd="@dimen/margin_15"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/grey"
+                        app:age="@{viewModel.doctorDetails!=null ? viewModel.doctorDetails.dob : null}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tvDoctorAgeLabel"
+                        app:layout_constraintTop_toTopOf="@id/tvDoctorAgeLabel"
+                        app:layout_constraintWidth_percent="0.5" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDoctorAddressLabel"
+                        style="@style/label_text2"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:text="@string/address"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvDoctorAgeLabel"
+                        app:layout_constraintWidth_percent="0.4" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDoctorAddress"
+                        style="@style/label_text2"
+                        android:layout_marginEnd="@dimen/margin_15"
+                        android:text="@{viewModel.doctorDetails.address!=`` ? viewModel.doctorDetails.address:`-`}"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/grey"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tvDoctorAddressLabel"
+                        app:layout_constraintTop_toTopOf="@id/tvDoctorAddressLabel"
+                        app:layout_constraintWidth_percent="0.5" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDoctorDegree"
+                        style="@style/label_text2"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:text="@string/degree_label"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvDoctorAddress"
+                        app:layout_constraintWidth_percent="0.4" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDoctorDegreeValue"
+                        style="@style/label_text2"
+                        android:layout_marginTop="@dimen/margin_4"
+                        android:layout_marginEnd="@dimen/margin_15"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tvDoctorDegree"
+                        app:layout_constraintTop_toTopOf="@id/tvDoctorDegree"
+                        app:layout_constraintWidth_percent="0.5"
+                        app:string="@{viewModel.doctorDetails != null ? viewModel.doctorDetails.degree : null}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDoctorSpec"
+                        style="@style/label_text2"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:text="@string/specialization_label"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvDoctorDegree"
+                        app:layout_constraintWidth_percent="0.4" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDoctorSpecValue"
+                        style="@style/label_text2"
+                        android:layout_marginTop="@dimen/margin_4"
+                        android:layout_marginEnd="@dimen/margin_15"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tvDoctorSpec"
+                        app:layout_constraintTop_toTopOf="@id/tvDoctorSpec"
+                        app:layout_constraintWidth_percent="0.5"
+                        app:string="@{viewModel.doctorDetails != null ? viewModel.doctorDetails.specialities : null}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDoctorEmail"
+                        style="@style/label_text2"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:text="@string/email"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvDoctorSpec"
+                        app:layout_constraintWidth_percent="0.4" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDoctorEmailValue"
+                        style="@style/label_text2"
+                        android:layout_marginTop="@dimen/margin_4"
+                        android:layout_marginEnd="@dimen/margin_15"
+                        android:text="@{viewModel.doctorDetails.email}"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tvDoctorEmail"
+                        app:layout_constraintTop_toTopOf="@id/tvDoctorEmail"
+                        app:layout_constraintWidth_percent="0.5" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDoctorContact"
+                        style="@style/label_text2"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:text="@string/contact_no"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvDoctorEmail"
+                        app:layout_constraintWidth_percent="0.4" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDoctorContactValue"
+                        style="@style/label_text2"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="@dimen/margin_4"
+                        android:layout_marginEnd="@dimen/margin_15"
+                        android:drawableStart="@drawable/ic_phone_white"
+                        android:onClick="@{()->viewModel.clickOnCall(viewModel.doctorDetails.contactNumber)}"
+                        android:text="@{viewModel.doctorDetails.contactNumber}"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvDoctorContact"
+                        app:layout_constraintWidth_percent="0.5" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDoctorEmailVerified"
+                        style="@style/label_text2"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:text="@string/email_verified"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvDoctorContact"
+                        app:layout_constraintWidth_percent="0.4" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDoctorEmailVerifiedValue"
+                        style="@style/label_text2"
+                        android:layout_marginTop="@dimen/margin_4"
+                        android:layout_marginEnd="@dimen/margin_15"
+                        android:text="@{viewModel.doctorDetails.emailVerified ?  `Yes` : `No`}"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tvDoctorEmailVerified"
+                        app:layout_constraintTop_toTopOf="@id/tvDoctorEmailVerified"
+                        app:layout_constraintWidth_percent="0.5" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDoctorPhoneVerified"
+                        style="@style/label_text2"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:text="@string/phone_verified"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvDoctorEmailVerified"
+                        app:layout_constraintWidth_percent="0.4" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDoctorPhoneVerifiedValue"
+                        style="@style/label_text2"
+                        android:layout_marginTop="@dimen/margin_4"
+                        android:layout_marginEnd="@dimen/margin_15"
+                        android:text="@{viewModel.doctorDetails.phoneNumberVerified ?  `Yes` : `No`}"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tvDoctorPhoneVerified"
+                        app:layout_constraintTop_toTopOf="@id/tvDoctorPhoneVerified"
+                        app:layout_constraintWidth_percent="0.5" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

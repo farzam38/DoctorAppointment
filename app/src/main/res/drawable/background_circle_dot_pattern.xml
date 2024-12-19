@@ -1,0 +1,10 @@
+<!-- res/drawable/background_circle_dot_pattern.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--Blue Dot Background Circle -->
+    <item android:drawable="@drawable/round_blue_dot_circle" />
+
+    <!-- Plus Icon (Adjust the size and color as needed) -->
+    <item android:drawable="@drawable/ic_add_blue_icon" />
+
+</layer-list>

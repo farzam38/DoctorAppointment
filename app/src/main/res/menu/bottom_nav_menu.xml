@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_search"
+        android:icon="@drawable/baseline_search_24"
+        android:title="@string/search" />
+    <item
+        android:id="@+id/navigation_booking"
+        android:icon="@drawable/baseline_bookings"
+        android:title="@string/my_booking" />
+
+    <item
+        android:id="@+id/navigation_user_profile"
+        android:icon="@drawable/profile_selector"
+        android:title="@string/title_profile" />
+
+</menu>

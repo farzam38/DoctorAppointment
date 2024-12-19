@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_dashboard_nav_graph"
+    app:startDestination="@id/navigation_search">
+
+    <fragment
+        android:id="@+id/navigation_booking"
+        android:name="com.android.doctorapp.ui.userdashboard.userfragment.UserRequestFragment"
+        tools:layout="@layout/fragment_user_request">
+
+        <action
+            android:id="@+id/action_user_booking_to_bookingDetail"
+            app:destination="@+id/BookingDetail" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.android.doctorapp.ui.userdashboard.userfragment.UserAppointmentFragment"
+        tools:layout="@layout/fragment_user_appointment">
+
+        <action
+            android:id="@+id/action_user_appointment_to_bookAppointment"
+            app:destination="@+id/BookAppointment" />
+
+        <action
+            android:id="@+id/action_user_appointment_to_allFeedback"
+            app:destination="@+id/AllFeedback" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_user_profile"
+        android:name="com.android.doctorapp.ui.profile.ProfileFragment"
+        tools:layout="@layout/fragment_profile">
+
+        <action
+            android:id="@+id/action_user_profile_to_updateUserProfile"
+            app:destination="@+id/AddUserProfileFragment" />
+        <action
+            android:id="@+id/action_user_profile_to_feedBack"
+            app:destination="@+id/Feedback" />
+
+        <action
+            android:id="@+id/action_user_profile_to_symptoms"
+            app:destination="@+id/Symptoms" />
+
+        <action
+            android:id="@+id/action_user_profile_to_history"
+            app:destination="@+id/History" />
+
+        <action
+            android:id="@+id/action_user_profile_to_myDoctors"
+            app:destination="@+id/MyDoctors" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/BookAppointment"
+        android:name="com.android.doctorapp.ui.appointment.BookAppointmentFragment"
+        tools:layout="@layout/fragment_book_appointment">
+
+        <action
+            android:id="@+id/action_book_appointment_to_viewClinic"
+            app:destination="@+id/navigation_view_clinic" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/AddUserProfileFragment"
+        android:name="com.android.doctorapp.ui.profile.AddUserProfileFragment"
+        tools:layout="@layout/fragment_update_doctor_profile">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/BookingDetail"
+        android:name="com.android.doctorapp.ui.userdashboard.userfragment.BookingDetailFragment"
+        tools:layout="@layout/fragment_booking_detail">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/Feedback"
+        android:name="com.android.doctorapp.ui.feedback.FeedbackFragment"
+        tools:layout="@layout/fragment_feedback">
+        <action
+            android:id="@+id/action_feedback_to_feedBack_details"
+            app:destination="@+id/FeedbackDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/FeedbackDetails"
+        android:name="com.android.doctorapp.ui.feedback.FeedbackDetailFragment"
+        tools:layout="@layout/fragment_feedback_details">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/Symptoms"
+        android:name="com.android.doctorapp.ui.profile.SymptomsFragment"
+        tools:layout="@layout/fragment_symptoms">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/History"
+        android:name="com.android.doctorapp.ui.profile.HistoryFragment"
+        tools:layout="@layout/fragment_history">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/MyDoctors"
+        android:name="com.android.doctorapp.ui.profile.MyDoctorsFragment"
+        tools:layout="@layout/fragment_my_doctors">
+
+        <action
+            android:id="@+id/action_my_doctors_to_bookAppointment"
+            app:destination="@+id/BookAppointment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/AllFeedback"
+        android:name="com.android.doctorapp.ui.feedback.AllFeedbackFragment"
+        tools:layout="@layout/fragment_all_feedback">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_view_clinic"
+        android:name="com.android.doctorapp.ui.doctordashboard.doctorfragment.ViewClinicFragment"
+        tools:layout="@layout/fragment_view_clinic">
+
+        <action
+            android:id="@+id/action_viewClinic_to_previewClinic"
+            app:destination="@+id/navigation_preview_clinic" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_preview_clinic"
+        android:name="com.android.doctorapp.ui.doctordashboard.doctorfragment.PreviewClinicImgFragment"
+        tools:layout="@layout/fragment_preview_clinic_img">
+
+    </fragment>
+
+</navigation>
